@@ -3,16 +3,15 @@ import { connect } from 'react-redux';
 import Smurf from './Smurf';
 
  const SmurfList = (props)=> {
+    //3. Replace the static isLoading variable with the state loading variable.
+    const { smurfs, isLoading } = props;
     
-    const { smurfs } = props;
-   
-    const isLoading = false;
-
     if (isLoading) {
         return <h1>Loading...</h1>;
     }    
 
     return(<div className="listContainer">
+        {/* 2. Replace the single Smurf component instance with a map return a Smurf component for each entry in the smurfs list. */}
         {
             smurfs.map(smurf => <Smurf key ={smurf.id} smurf={smurf}/>)
         }        
@@ -21,10 +20,7 @@ import Smurf from './Smurf';
 
 //Task List:
 //1. Connect the smurfs and loading state values to the SmurfList component.
-const mapStateToProps = ({ smurfs }) => ({ smurfs });
+const mapStateToProps = ({ smurfs, isLoading }) => ({ smurfs, isLoading});
 
 export default connect(mapStateToProps)(SmurfList);
 
-
-//2. Replace the single Smurf component instance with a map return a Smurf component for each entry in the smurfs list.
-//3. Replace the static isLoading variable with the state loading variable.
