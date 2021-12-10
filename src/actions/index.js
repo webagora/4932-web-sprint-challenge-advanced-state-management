@@ -21,4 +21,7 @@ export const fetchSmurfs = () => (dispatch) => {
 }
 
 //2. Add a standard action that allows us to add new smurf (including the name, nickname, position, summary)
+export const add_smurf = ( newSmurf ) => {
+    return ({type: ADD_SMURF, payload: newSmurf})
+};
 
