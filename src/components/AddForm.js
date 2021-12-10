@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 
 //Task List:
 //1. Connect the errorMessage, setError and addSmurf actions to the AddForm component.
@@ -6,7 +7,7 @@ import { connect } from 'react-redux';
 import { add_smurf, set_Error } from '../actions';
 
 const AddForm = (props) => {
-    console.log('props in AddForm: ', props);
+    
     const [state, setState] = useState({
         id: Date.now(),
         name:"",
@@ -33,6 +34,15 @@ const AddForm = (props) => {
         } else {
             //dispatch an addSmurf action
             props.add_smurf(state);
+
+            axios.post('http://localhost:3333/smurfs', state)
+            .then(res => {
+                console.log('res: ', res);
+                
+            }).catch(err => {
+                console.error(err);
+            });
+
         }
     }
 
