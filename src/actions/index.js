@@ -10,7 +10,7 @@ export const ADD_SMURF = "ADD_SMURF";
 export const fetchSmurfs = () => (dispatch) => {
     dispatch({type: LOADING})
     
-    axios.get(`http://localhost:3333/ smurfs`)
+    axios.get(`http://localhost:3333/smurfs`)
         .then (resp => {            
             dispatch({type: SUCCESS, payload: resp.data})
         })

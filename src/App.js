@@ -9,8 +9,7 @@ import Header from './components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 
-const App = ( props ) => {
-  console.log('props in APP:', props);
+const App = ( props ) => {  
   const { fetchSmurfs } = props;
   //2. Call the fetchSmurfs action when the component mounts.
   useEffect (() => {
