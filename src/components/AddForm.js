@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { add_smurf, set_Error } from '../actions';
 
 const AddForm = (props) => {
+    console.log('props in AddForm: ', props);
     const [state, setState] = useState({
+        id: Date.now(),
         name:"",
         position:"",
         nickname:"",
@@ -9,7 +13,8 @@ const AddForm = (props) => {
     });
 
     //remove when error state is added
-    const errorMessage = "";
+    // const errorMessage = '';
+    const errorMessage = props.errorMessage;
 
     const handleChange = e => {
         setState({
@@ -22,8 +27,11 @@ const AddForm = (props) => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
             //dispatch a custom error action
+            props.set_Error("ERROR: No empty of name, position and nickname.")
         } else {
             //dispatch an addSmurf action
+            props.add_smurf(state);
+
         }
     }
 
@@ -54,7 +62,12 @@ const AddForm = (props) => {
     </section>);
 }
 
-export default AddForm;
+const mapStateToProps = ( state ) => {
+    console.log('state in AddForm: ', state);
+    return state
+}
+
+export default connect(mapStateToProps, { add_smurf, set_Error })(AddForm);
 
 //Task List:
 //1. Connect the errorMessage, setError and addSmurf actions to the AddForm component.
