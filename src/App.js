@@ -20,7 +20,6 @@ const App = ( props ) => {
   return (
     <div className="App">
       <Header />
-
       <main>
         <SmurfList/>
         <AddForm/>
@@ -28,9 +27,7 @@ const App = ( props ) => {
     </div>
   );
 }
-const mapStateToProps = ( state ) => {
-  return state;
-}
-export default connect(mapStateToProps, { fetchSmurfs })(App);
+
+export default connect(null, { fetchSmurfs })(App);
 
 
