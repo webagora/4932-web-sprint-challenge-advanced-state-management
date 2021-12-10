@@ -1,4 +1,4 @@
-import { LOADING } from "../actions"
+import { LOADING, SUCCESS } from "../actions"
 import AddForm from "../components/AddForm"
 
 //Task List:
@@ -26,7 +26,15 @@ const reducer = (state = initialState, action) => {
                 smurfs: [],
                 isLoading: true,
                 error: ""
-            }        
+            }
+        case SUCCESS:
+            return {
+                ...state,
+                smurfs: action.payload,
+                isLoading: false,
+                error: ""
+            }
+        
         default:
             return state  
     }       
