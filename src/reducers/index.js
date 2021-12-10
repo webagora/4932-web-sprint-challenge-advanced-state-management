@@ -9,7 +9,7 @@ const initialState = {
     //  - a string indicating a possible error message
     smurfs: [],
     isLoading: false,
-    error: ""
+    errorMessage: ""
 }
 
 const reducer = (state = initialState, action) => {
@@ -25,21 +25,21 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 smurfs: [],
                 isLoading: true,
-                error: ""
+                errorMessage: ""
             }
         case SUCCESS:
             return {
                 ...state,
                 smurfs: action.payload,
                 isLoading: false,
-                error: ""
+                errorMessage: ""
             }
         case ERROR:
             return {
                 ...state,
                 smurfs: [],
                 isLoading: false,
-                error: action.payload
+                errorMessage: action.payload
             }
         case ADD_SMURF:
             return {

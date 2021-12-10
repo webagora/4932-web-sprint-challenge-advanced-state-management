@@ -10,13 +10,13 @@ export const ADD_SMURF = "ADD_SMURF";
 export const fetchSmurfs = () => (dispatch) => {
     dispatch({type: LOADING})
     
-    axios.get(`http://localhost:3333/smurfs`)
+    axios.get(`http://localhost:3333/ smurfs`)
         .then (resp => {            
             dispatch({type: SUCCESS, payload: resp.data})
         })
         .catch( err => {
             //3. Add a standard action that allows us to set the value of the error message slice of state.            
-            dispatch({type: ERROR, payload: err.message })
+            dispatch(set_Error(err.message))
         })    
 }
 
@@ -24,4 +24,8 @@ export const fetchSmurfs = () => (dispatch) => {
 export const add_smurf = ( newSmurf ) => {
     return ({type: ADD_SMURF, payload: newSmurf})
 };
+
+export const set_Error = (errorMessage) => {
+    return ({type: ERROR, payload: errorMessage })
+}
 
