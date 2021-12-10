@@ -1,4 +1,4 @@
-
+import { LOADING } from "../actions"
 import AddForm from "../components/AddForm"
 
 //Task List:
@@ -20,7 +20,13 @@ const reducer = (state = initialState, action) => {
     //6. Add in a reducer case to accommodate adding a smurf (including the name, nickname, position, summary and an internally generated id) into your smurf list.
     //7. Add in a reducer case that adds in a value to the error message.
     switch (action.type){
-        
+        case LOADING:
+            return {
+                ...state,
+                smurfs: [],
+                isLoading: true,
+                error: ""
+            }        
         default:
             return state  
     }       
